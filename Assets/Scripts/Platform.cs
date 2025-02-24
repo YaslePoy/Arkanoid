@@ -20,7 +20,7 @@ public class Platform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var delta = (mousePos - transform.position).x;
         // transform.position = new Vector2(transform.position.x, _startHeight);
         // delta = Math.Sign(delta) * 2;
@@ -39,5 +39,12 @@ public class Platform : MonoBehaviour
         var otherRb = other.gameObject.GetComponent<Rigidbody2D>();
         
         otherRb.velocity = new Vector2(posDelta, Radius).normalized * otherRb.velocity.magnitude;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        var component = other.gameObject.GetComponent<Bonus>();
+        component.Handle.Apply();
+        Destroy(other.gameObject);
     }
 }

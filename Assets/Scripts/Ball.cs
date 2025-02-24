@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public static Ball Singleton;
     // Start is called before the first frame update
     private Rigidbody2D ballRb;
     void Start()
     {
+        Singleton = this;
         ballRb = GetComponent<Rigidbody2D>();
     }
 
@@ -17,7 +19,7 @@ public class Ball : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             
-            ballRb.velocity = new Vector2(Random.value, Random.value) * 10f;
+            ballRb.velocity = new Vector2(Random.value, Random.value).normalized * 10f;
         }
     }
 }
