@@ -7,7 +7,16 @@ public class BallDeath : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.name);
-        Destroy(other.gameObject);
+        if (other.gameObject.tag == "Player")
+        {
+            if (FindObjectsOfType<Ball>().Length != 1)
+            {
+                Destroy(other.gameObject);
+                return;
+            }
+            
+            var ball = other.gameObject.GetComponent<Ball>();
+            ball.HandleDeath();
+        }
     }
 }

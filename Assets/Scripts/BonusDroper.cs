@@ -11,7 +11,6 @@ public class BonusDroper : MonoBehaviour
     private void OnDestroy()
     {
         var rand = random.Next() % BonusPrefabs.Length;
-        Debug.Log(rand.ToString());
         Instantiate(BonusPrefabs[rand], transform.position, Quaternion.identity);
     }
 }
