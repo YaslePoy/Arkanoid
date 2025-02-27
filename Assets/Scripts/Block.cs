@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Block : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class Block : MonoBehaviour
         if (--Lifes == 0)
         {
             Destroy(gameObject);
+            if (FindObjectsOfType<DynamicTexture>().Length == 1)
+            {
+                Debug.Log("Level finished");
+                // SceneManager.CreateScene("DeadScene");
+                SceneManager.LoadScene("DeadScene");
+            }
         }
     }
 }
