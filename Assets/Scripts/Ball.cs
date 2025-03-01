@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Ball : MonoBehaviour
 {
     public static Ball Singleton;
+
     // Start is called before the first frame update
     private Rigidbody2D ballRb;
     private Vector3 ballPos;
     public int Lifes;
     public GameObject LifesHolder;
+
+    [FormerlySerializedAs("StartUpInpulse")]
+    public bool StartupInpulse;
+
     void Start()
     {
         Singleton = this;
         ballRb = GetComponent<Rigidbody2D>();
         ballPos = transform.position;
+        if (StartupInpulse)
+        {
+            ballRb.velocity = new Vector2(Random.value, Random.value).normalized * 10f;
+        }
     }
 
     // Update is called once per frame
@@ -26,6 +36,7 @@ public class Ball : MonoBehaviour
         }
     }
 
+
     public void HandleDeath()
     {
         if (--Lifes == 0)
@@ -33,8 +44,8 @@ public class Ball : MonoBehaviour
             Debug.Log("Ball dead");
             Lifes = 3;
         }
-        
-        
+
+
         ballRb.velocity = Vector2.zero;
         transform.position = ballPos;
         var hearts = LifesHolder.GetComponentsInChildren<SpriteRenderer>();

@@ -23,7 +23,7 @@ public class Block : MonoBehaviour
             {
                 Debug.Log("Level finished");
                 // SceneManager.CreateScene("DeadScene");
-                SceneManager.LoadScene("DeadScene");
+                SceneManager.LoadScene(3);
             }
         }
     }
