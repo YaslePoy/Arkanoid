@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LoginHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TextField LoginField;
+    public TextField PassowrdField;
+    public void OnLogin()
     {
+        var login = LoginField.text;
+        var pass = PassowrdField.text;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }
