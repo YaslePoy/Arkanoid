@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -19,6 +20,7 @@ public class LoginHandler : MonoBehaviour
         StartCoroutine(Api.GetUser(login, pass, authorization =>
         {
             Debug.Log("Authorized");
+            SceneManager.LoadScene(3);
         }, () =>
         {
             Debug.Log("Incorrect auth data");

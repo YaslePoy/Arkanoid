@@ -19,6 +19,10 @@ public class LevelSelectHandler : MonoBehaviour
     public void LevelSelect3()
     {
         SceneManager.LoadScene(2);
+    }
 
+    public void GotoShop()
+    {
+        SceneManager.LoadScene(5);
     }
 }
