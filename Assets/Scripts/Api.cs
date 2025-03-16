@@ -1,17 +1,28 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.Networking;
+using UserAuthorization = ArkanoidApi.Contracts.UserAuthorization;
 
 namespace DefaultNamespace
 {
     public class Api
     {
-        public const string ApiPath = "http://localhost:5000/api";
+        private const string ApiPath = "http://localhost:5251/api/";
         
-        public static IEnumerator GetUser(string login, string password)
+        public static IEnumerator GetUser(string login, string password, Action<UserAuthorization> successCallback, Action failureCallback)
         {
-            using (UnityWebRequest uwr = UnityWebRequest.Get($"{ApiPath}users/{}"))
+            using UnityWebRequest uwr = UnityWebRequest.Get($"{ApiPath}users/authorize?login={login}&password={password}");
+            yield return uwr.SendWebRequest();
+            switch (uwr.result)
             {
-                yield return uwr.result;
+                case UnityWebRequest.Result.Success:
+                    successCallback(JsonUtility.FromJson<UserAuthorization>(uwr.downloadHandler.text));
+                    break;
+                default:
+                    failureCallback();
+                    break;
             }
         }
     }

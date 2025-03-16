@@ -661,6 +661,7 @@ GameObject:
   - component: {fileID: 1035636065}
   - component: {fileID: 1035636064}
   - component: {fileID: 1035636063}
+  - component: {fileID: 1035636066}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -731,7 +732,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1035636064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1035636066}
+        m_TargetAssemblyTypeName: LoginHandler, Assembly-CSharp
+        m_MethodName: OnLogin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1035636064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,6 +783,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035636061}
   m_CullTransparentMesh: 1
+--- !u!114 &1035636066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035636061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a197fb333bb4e36b05c6cb5c8118cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginField: {fileID: 1863164850}
+  PassowrdField: {fileID: 1616873549}
 --- !u!1 &1616873547
 GameObject:
   m_ObjectHideFlags: 0
