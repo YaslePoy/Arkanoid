@@ -20,6 +20,7 @@ public class LoginHandler : MonoBehaviour
         StartCoroutine(Api.GetUser(login, pass, authorization =>
         {
             Debug.Log("Authorized");
+            GameManager.Instance.CurrentUser = authorization;
             SceneManager.LoadScene(3);
         }, () =>
         {

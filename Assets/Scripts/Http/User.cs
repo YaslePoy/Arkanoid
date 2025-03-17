@@ -1,11 +1,15 @@
+using System;
+
 namespace ArkanoidApi.Model
 {
+    [Serializable]
     public class User : DbEntity
     {
-        public string Name { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public int Balance { get; set; }
-        public string Property { get; set; }
+        public string Name;
+        public string Login;
+        public string Password;
+        public int Balance;
+        public string SelectedSkin;
+        public string Property;
     }
 }

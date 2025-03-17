@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class Block : MonoBehaviour
 {
@@ -19,9 +21,12 @@ public class Block : MonoBehaviour
         if (--Lifes == 0)
         {
             Destroy(gameObject);
+            GameManager.Instance.CurrentUser.balance += Random.Range(0, 10);
             if (FindObjectsOfType<DynamicTexture>().Length == 1)
             {
                 Debug.Log("Level finished");
+                GameManager.Instance.CurrentUser.balance += 500;
+                StartCoroutine(Api.UpdateUser());
                 // SceneManager.CreateScene("DeadScene");
                 SceneManager.LoadScene(3);
             }

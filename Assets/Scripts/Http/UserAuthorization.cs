@@ -1,9 +1,18 @@
-using ArkanoidApi.Model;
+using System;
+using UnityEngine.Serialization;
 
 namespace ArkanoidApi.Contracts
 {
-    public class UserAuthorization : User
+    [Serializable]
+    public class UserAuthorization
     {
-        public string Token { get; set; }
+        public int id;
+        public string name;
+        public string login;
+        public string password;
+        public int balance;
+        public string selectedSkin;
+        public string property;
+        public string Token;
     }
 }
